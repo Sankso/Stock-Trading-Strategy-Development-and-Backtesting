@@ -98,12 +98,17 @@ Sharpe Ratio      : 2.59
 
 ## Plots
 
-| Chart | Description |
-|---|---|
-| `price_signals.png` | Close price + Bollinger Bands + Buy/Sell markers |
-| `rsi.png` | RSI with overbought/oversold shaded zones |
-| `adx.png` | ADX trend strength with threshold line |
-| `portfolio.png` | Portfolio value vs. initial capital baseline |
+### 1. Price · Bollinger Bands · Buy/Sell Signals
+![Price and Signals](assets/price_signals.png)
+
+### 2. RSI — Overbought / Oversold Zones
+![RSI](assets/rsi.png)
+
+### 3. ADX — Trend Strength
+![ADX](assets/adx.png)
+
+### 4. Portfolio Value Over Time
+![Portfolio](assets/portfolio.png)
 
 ---
 
