@@ -1,0 +1,14 @@
+api:
+  key: "97K72T1VE9OD7Y5L"
+  timeout: 10          # seconds before request is aborted
+  max_retries: 3       # retry attempts on transient failures
+
+trading:
+  symbol: "AAPL"
+  initial_capital: 10000
+
+indicators:
+  rsi_period: 14
+  bb_period: 20
+  bb_std: 2.0
+  adx_period: 14
