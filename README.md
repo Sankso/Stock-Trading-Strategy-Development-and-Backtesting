@@ -26,59 +26,6 @@ A **production-grade, modular algorithmic trading system** built in Python. Refa
 
 ---
 
-## Two-Person Learning Split
-
-Use this split to let two people study and understand the project in parallel.
-
-### Person A — Data + Strategy Pipeline (Input → Signals)
-
-- Study `main.py` from config loading through signal generation.
-- Own `src/data/ingestion.py`:
-  - API request flow
-  - retry/backoff behavior
-  - payload parsing and ingestion errors
-- Own strategy modules:
-  - `src/strategies/base.py`
-  - `src/strategies/technical.py`
-  - RSI, Bollinger Bands, ADX, and signal logic (`-1`, `0`, `1`)
-- Validate understanding with:
-  - `pytest tests/test_indicators.py -v`
-- Deliverable:
-  - Explain how raw OHLCV data is transformed into enriched indicator columns and final `signal` values.
-
-### Person B — Backtesting + Results Pipeline (Signals → Performance)
-
-- Study `main.py` from backtest execution to output/plot generation.
-- Own `src/backtester.py`:
-  - signal execution model
-  - cash/position updates
-  - trade ledger and performance metrics
-- Own result/observability modules:
-  - `src/plotting.py`
-  - `src/logger.py`
-- Validate understanding with:
-  - `pytest tests/test_backtester.py -v`
-- Deliverable:
-  - Explain how `signal` values become trades, portfolio curve, P&L, annualized metrics, and charts.
-
-### Joint Sync Points
-
-1. **Data handoff (A → B):** Person A confirms final DataFrame schema before backtesting:
-   - `open`, `high`, `low`, `close`, `volume`
-   - indicator columns (`RSI`, `BB_MA`, `BB_upper`, `BB_lower`, `ADX`)
-   - `signal`
-2. **Execution assumptions (B → A):** Person B confirms assumptions expected by backtester:
-   - next-bar execution via shifted signal
-   - no look-ahead bias
-   - single active position at a time
-3. **System alignment (A + B):** Run full flow together using:
-   - `python main.py`
-   - review trade ledger, performance metrics, and generated plots
-
-This dependency boundary stays clean: Person A produces `signal`, Person B consumes it.
-
----
-
 ## Technical Indicators
 
 All indicator math is **fully vectorized** using Pandas/NumPy — zero row-level loops.
