@@ -98,17 +98,9 @@ Sharpe Ratio      : 2.59
 
 ## Plots
 
-### 1. Price · Bollinger Bands · Buy/Sell Signals
-![Price and Signals](assets/price_signals.png)
-
-### 2. RSI — Overbought / Oversold Zones
-![RSI](assets/rsi.png)
-
-### 3. ADX — Trend Strength
-![ADX](assets/adx.png)
-
-### 4. Portfolio Value Over Time
-![Portfolio](assets/portfolio.png)
+### Trading Strategy Dashboard
+A unified 4-panel dashboard with a shared time axis to visually correlate price action, indicators (RSI, ADX), and portfolio value.
+![Dashboard](assets/dashboard.png)
 
 ---
 

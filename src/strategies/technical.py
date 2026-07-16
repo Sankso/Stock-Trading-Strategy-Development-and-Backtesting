@@ -6,7 +6,7 @@ from .base import BaseStrategy
 class TechnicalIndicatorStrategy(BaseStrategy):
     """
     Concrete strategy using RSI, Bollinger Bands, and ADX.
-    All calculations are fully vectorized — zero row-level loops.
+    All calculations are fully vectorized, zero row-level loops.
     """
 
     def __init__(self, df: pd.DataFrame, rsi_period: int = 14,
@@ -18,7 +18,7 @@ class TechnicalIndicatorStrategy(BaseStrategy):
         self.adx_period = adx_period
 
     # ------------------------------------------------------------------ #
-    #  Indicator math — fully vectorized                                   #
+    #  Indicator math — fully vectorized                                 #
     # ------------------------------------------------------------------ #
 
     def _compute_rsi(self) -> pd.Series:
