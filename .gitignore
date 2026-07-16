@@ -12,3 +12,6 @@ plots/
 # Env
 .env
 *.env
+
+# Power BI Exports
+exports/

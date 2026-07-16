@@ -1,3 +1,4 @@
+import os
 import yaml
 from src.logger import get_logger
 from src.data.ingestion import DataIngestionEngine, DataIngestionError
@@ -68,4 +69,11 @@ if __name__ == "__main__":
     print(f"Annual Volatility : {annualised_volatility(returns)}%")
     print(f"Sharpe Ratio      : {sharpe_ratio(returns)}")
 
+    # ── 5. Output Generation ──────────────────────────────────────────────── #
     plot_all(df, portfolio, initial_capital)
+    
+    # Export to CSV for Power BI
+    os.makedirs("exports", exist_ok=True)
+    portfolio.to_csv("exports/portfolio.csv")
+    trade_log.to_csv("exports/trade_log.csv", index=False)
+    logger.info("Exported portfolio.csv and trade_log.csv to 'exports/' for Power BI.")
