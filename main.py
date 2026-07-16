@@ -74,6 +74,25 @@ if __name__ == "__main__":
     
     # Export to CSV for Power BI
     os.makedirs("exports", exist_ok=True)
+    
+    # 1. Portfolio over time
     portfolio.to_csv("exports/portfolio.csv")
+    
+    # 2. Trade Ledger
     trade_log.to_csv("exports/trade_log.csv", index=False)
-    logger.info("Exported portfolio.csv and trade_log.csv to 'exports/' for Power BI.")
+    
+    # 3. Market Data & Indicators (so Power BI can plot price/RSI/ADX)
+    df.to_csv("exports/market_data.csv")
+    
+    # 4. Final Performance Metrics
+    import pandas as pd
+    metrics_df = pd.DataFrame([{
+        "Total Trades": len(trade_log),
+        "Cumulative P&L": cumulative_return(portfolio, initial_capital),
+        "Annual Return %": annualised_return(returns),
+        "Annual Volatility %": annualised_volatility(returns),
+        "Sharpe Ratio": sharpe_ratio(returns)
+    }])
+    metrics_df.to_csv("exports/metrics.csv", index=False)
+    
+    logger.info("Exported portfolio, trade_log, market_data, and metrics to 'exports/' for Power BI.")
